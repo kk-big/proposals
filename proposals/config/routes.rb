@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :users
+  resources :branches
   resources :proposals do
     collection do
       post 'confirm'

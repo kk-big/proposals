@@ -1,0 +1,53 @@
+<% unless notice.blank? %>
+<div class="alert alert-warning alert-dismissible" role="alert" id="margin-top10">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <%= notice %>
+</div>
+<% end %>
+
+<h4>地区本部情報</h4>
+
+<%= form_for(@branch) do |f| %>
+  <% if @branch.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@branch.errors.count, "error") %> prohibited this branch from being saved:</h2>
+
+      <ul>
+      <% @branch.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+	  <table class="user_form_box">
+        <tr class="control-group">
+          <td class="form_label"><span class="label label-danger">必須</span><%= f.label :branch_cd, class: "control-label" %></td>
+          <td class="controls">
+            <%= f.text_field :branch_cd, class: "input-large form-control", disabled:true%>
+          </td>
+          <td>（半角数字）</td>
+        </tr>
+        <tr class="control-group">
+          <td class="form_label"><span class="label label-danger">必須</span><%= f.label :branch_name, class: "control-label" %></td>
+          <td class="controls">
+            <%= f.text_field :branch_name, class: "input-large form-control", disabled:true %>
+          </td>
+          <td></td>
+        </tr>
+	  </table>
+	  <div class="actions" id="user_submit">
+        <table>
+          <tr>
+            <td>
+              <%= link_to '変更', edit_branch_path(@branch), class: "btn btn-primary" %> 
+            </td>
+            <td>
+              <%= link_to '戻る', branches_path, class: "btn btn-default", id: "btn-return" %>
+            </td>
+          </tr>
+        </table>
+	  </div>
+  </fieldset>
+<% end %>

@@ -175,7 +175,6 @@ footer{
   margin-top: 20px;
 }
 
-
 /* ユーザー登録　入力フォームテーブルサイズ */
 .user_form_box {
   width:440px;
@@ -194,6 +193,20 @@ footer{
 }
 .user-table>thead>tr>th {
   border: 1px solid #ddd;
+}
+
+/* 地区本部 */
+.branch-table tr> td{
+  text-align: center;
+}
+.branch-table>thead>tr>th {
+  border: 1px solid #ddd;
+}
+#width100{
+  width:100px;
+}
+#width150{
+  width:150px;
 }
 
 #align-left{

@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+        branch: '地区本部管理'
+    attributes:
+      branch:
+        branch_cd: '地区本部コード'
+        branch_name: '地区本部名'
+        created_at: 'データ作成日'
+        updated_at: 'データ更新日'

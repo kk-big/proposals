@@ -4,7 +4,8 @@ class ProposalsController < ApplicationController
   # GET /proposals
   # GET /proposals.json
   def index
-    if  session[:user_id].nil?
+#    if  session[:user_id].nil?
+    if  $user.blank?
       redirect_to root_path and return
     end
 
