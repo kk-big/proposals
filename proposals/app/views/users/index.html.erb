@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+
+<h4>ユーザー一覧</h4>
+
+<div class="float-right">
+ <%= link_to sanitize('<i class="fa fa-pencil"></i>') + '新規登録', new_user_path, class: "btn btn-primary" %>
+</div>
+
+ <table class="table table-condensed table-hover table-striped table-bordered user-table">
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>職員コード</th>
+      <th>職員名</th>
+      <th>地区本部</th>
+      <th>所属部署</th>
+      <th>権限</th>
+      <th>メールアドレス</th>
+      <th>電話</th>
+      <th>状態</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% count = 0 %>
+    <% @users.each do |user| %>
+      <tr>
+        <td id="align-right"><%= count +=1 %></td>
+        <td id="align-right"><%= user.user_id %></td>
+        <td id="align-left"><%= user.user_name %></td>
+        <td id="align-left"><%= user.branch.branch_name %></td>
+        <td id="align-left"><%= user.section_name %></td>
+        <td><%case user.role
+            when '1' %>
+              <%='一般' %>
+		    <%when '2' %>
+              <%='地区本部事務局' %>
+		    <%when '3' %>
+              <%='地区本部担当部署' %>
+		    <%when '4' %>
+              <%='本店事務局' %>
+		    <%when '5' %>
+              <%='提案審査委員会' %>
+		    <%when '9' %>
+              <%='システム管理者' %>
+		   <%end%>
+        </td>
+        <td id="align-left"><%= user.mail %></td>
+        <td id="align-left"><%= user.tel %></td>
+        <td><% if user.delete_flag == '1' then %>
+              <%='無効' %>
+            <% else %>
+              <%='有効' %>
+            <% end %>
+        </td>
+        <td><%= link_to '変更', edit_user_path(user) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,104 @@
+<% unless notice.blank? %>
+<div class="alert alert-warning alert-dismissible" role="alert" id="margin-top10">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <%= notice %>
+</div>
+<% end %>
+
+<h4>ユーザー情報</h4>
+
+<%= form_for(@user) do |f| %>
+
+  <fieldset>
+	  <table class="user_form_box">
+          <tr class="control-group">
+               <td class="form_label"><span class="label label-danger">必須</span><%= f.label :branch_cd, class: "control-label" %></td>
+               <td class="controls">
+                   <%= f.select :branch_cd, Branch.all.order('branch_cd asc').map{|branch| [branch.branch_name, branch.branch_cd]} , {include_blank: true} ,{ :class => "input-large form-control disabled-color", disabled:true  } %>
+               </td>
+               <td></td>
+          </tr>
+          <tr class="control-group">
+               <td class="form_label"><span class="label label-danger">必須</span><%= f.label :user_id,class: "control-label" %></td>
+               <td class="controls">
+                   <%= f.text_field :user_id, class: "input-large form-control", disabled:true %>
+               </td>
+               <td>（半角数字）</td>
+          </tr>
+          <tr class="control-group">
+               <td class="form_label"><span class="label label-danger">必須</span><%= f.label :user_name,class: "control-label" %></td>
+               <td class="controls">
+                   <%= f.text_field :user_name, class: "input-large form-control", disabled:true  %>
+               </td>
+               <td></td>
+          </tr>
+          <tr class="control-group">
+               <td class="form_label"><span class="label label-danger">必須</span><%= f.label :user_password,class: "control-label" %></td>
+               <td class="controls">
+                   <%= f.password_field :user_password, :value => @user.user_password, class: "input-large form-control", disabled:true  %>
+               </td>
+               <td>（半角英数字）</td>
+          </tr>
+          <tr class="control-group">
+               <td class="form_label"><span class="label label-danger">必須</span><%= f.label :user_password_confirmation,class: "control-label" %></td>
+               <td class="controls">
+                   <%= f.password_field :user_password_confirmation, :value => @user.user_password, class: "input-large form-control", disabled:true  %>
+               </td>
+               <td>（半角英数字）</td>
+          </tr>
+          <tr class="control-group">
+               <td class="form_label"><%= f.label :section_name, class: "control-label" %></td>
+               <td class="controls">
+                   <%= f.text_field :section_name, class: "input-large form-control", disabled:true %>
+               </td>
+               <td></td>
+          </tr>
+          <tr class="control-group">
+               <td class="form_label"><%= f.label :mail, class: "control-label" %></td>
+               <td class="controls">
+                   <%= f.text_field :mail, class: "input-large form-control", disabled:true %>
+               </td>
+          </tr>
+          <tr class="control-group">
+               <td class="form_label"><%= f.label :tel, class: "control-label" %></td>
+               <td class="controls">
+                   <%= f.text_field :tel, class: "input-large form-control", disabled:true %>
+               </td>
+               <td></td>
+          </tr>
+		　　<tr class="control-group">
+               <td class="form_label"><%= f.label :role,class: "control-label" %></td>
+               <td class="controls">
+                   <%= f.select :role, [["一般", "1"], ["地区本部事務局", "2"], ["地区本部担当部署", "3"], ["本店事務局", "4"], ["提案審査会", "5"], ["システム管理者", "9"]] ,{}, { :class => 'input-large form-control disabled-color', disabled:true  } %>
+               </td>
+               <td></td>
+          </tr>
+          <tr class="control-group">
+               <td class="form_label"><%= f.label :delete_flag,class: "control-label" %></td>
+               <td class="controls">
+                   <%= f.select :delete_flag, [["有効", "0"], ["無効", "1"]] ,{}, { :class => 'input-large form-control disabled-color', disabled:true  } %>
+               </td>
+               <td></td>
+          </tr>
+
+	  </table>
+	  <div id="user_submit">
+        <table>
+          <tr>
+            <td>
+              <%= link_to '変更', edit_user_path(@user), class: "btn btn-primary" %> 
+            </td>
+            <td>
+              <% if session[:role] =='1'%>
+                <%= link_to '戻る', proposals_path, class: "btn btn-default", id: "btn-return" %>
+              <% else %>
+                <%= link_to '戻る', users_path, class: "btn btn-default", id: "btn-return" %>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+	  </div>
+
+  </fieldset>
+
+<% end %>

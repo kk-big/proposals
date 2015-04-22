@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    models:
+        user: 'ユーザー管理'
+    attributes:
+      user:
+        user_id: '職員コード'
+        user_password: 'パスワード'
+        user_password_confirmation: 'パスワード確認'
+        user_name: '職員名'
+        branch_cd: '地区本部'
+        section_name: '所属部署'
+        mail: 'メールアドレス'
+        tel: '電話番号'
+        role: '権限'
+        delete_flag: 'アカウント状態'
+        created_at: 'データ作成日'
+        updated_at: 'データ更新日'

@@ -1,0 +1,20 @@
+ja:
+  activerecord:
+    models:
+        proposal: '提案登録'
+    attributes:
+      proposal:
+        branch_cd: '地区本部'
+        user_id: '職員コード'
+        proposal_date: '提案日'
+        section_name: '所属部署名'
+        mail: 'メールアドレス'
+        tel: '電話番号'
+        proposal_type: '提案の分類'
+        project_type: '事業の分類'
+        proposal_title: '提案の題名'
+        now_problem: '現状と問題点'
+        proposal_detail: '具体的提案'
+        delete_flag: 'アカウント状態'
+        created_at: 'データ作成日'
+        updated_at: 'データ更新日'

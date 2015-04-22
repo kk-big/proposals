@@ -1,0 +1,37 @@
+<% unless notice.blank? %>
+<div class="alert alert-warning alert-dismissible" role="alert" id="margin-top10">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <%= notice %>
+</div>
+<% end %>
+
+<h4>提案一覧</h4>
+
+<div class="float-right">
+ <%= link_to sanitize('<i class="fa fa-pencil"></i>') + '新規登録', new_proposal_path, class: "btn btn-primary" %>
+</div>
+
+<table class="table table-condensed table-bordered table-hover table-striped proposal-table">
+  <thead>
+    <tr>
+      <th id="proposal_no">提案番号</th>
+      <th id="proposal_date">提案日</th>
+      <th id="user_name">提案者</th>
+      <th>提案の題名</th>
+      <th id="detail_column"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% count = 0 %>
+    <% @proposals.each do |proposal| %>
+      <tr>
+        <td id="align-right"><%= proposal.id %></td>
+        <td><%= yyyymmdd_slash(proposal.proposal_date) %></td>
+        <td><%= proposal.user_name %></td>
+        <td id="align-left"><%= proposal.proposal_title %></td>
+        <td><%= link_to '詳細', proposal %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

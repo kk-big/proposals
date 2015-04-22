@@ -1,0 +1,167 @@
+<h4>提案確認</h4>
+
+<p id="notice"><%= notice %></p>
+
+<%= form_for(@proposal) do |f| %>
+
+  <fieldset>
+    <table class="proposal_form_box">
+     <tr>
+     <td>
+	  <table class="proposal_form_box_left">
+　　　　　　　<!-- 提案番号 -->
+        <tr class="control-group">
+          <td class="form_label"><%= f.label :提案番号, class: "control-label" %></td>
+          <td class="controls">
+            <input type="text", value=<%= @proposal.id %> class="input-large form-control align-center"  disabled="disabled"/>
+          </td>
+        </tr>
+　　　　　　　<!-- 地区本部 -->
+        <tr class="control-group">
+          <td class="form_label"><%= f.label :branch_cd, class: "control-label" %></td>
+          <td class="controls">
+            <% @branch = Branch.where("branch_cd = ?", @proposal.branch_cd)%>
+            <input type="text", value=<%= @branch.first.try(:branch_name) %> class="input-large form-control align-center"  disabled="disabled"/>
+          </td>
+        </tr>
+　　　　　　　<!-- 職員コード  -->
+        <tr class="control-group">
+          <td class="form_label"><%= f.label :user_id,class: "control-label" %></td>
+          <td class="controls">
+            <%= f.text_field :user_id, class: "input-large form-control align-center", disabled:true %>
+          </td>
+        </tr>
+　　　　　　　<!-- メールアドレス -->
+        <tr class="control-group">
+          <td class="form_label"><%= f.label :mail, class: "control-label" %></td>
+          <td class="controls">
+            <%= f.text_field :mail, class: "input-large form-control align-center", disabled:true %>
+          </td>
+        </tr>
+　	  </table>
+      </td>
+      <td>
+	  <table class="proposal_form_box_right">
+　　　　　　　<!-- 提案日 -->
+        <tr class="control-group">
+          <td class="form_label"><%= f.label :proposal_date, class: "control-label" %></td>
+          <td class="controls">
+            <%= f.text_field :proposal_date, class: "input-large form-control align-center", disabled:true %>
+          </td>
+        </tr>
+　　　　　　　<!-- 所属部署 -->
+        <tr class="control-group">
+          <td class="form_label"><%= f.label :section_name, class: "control-label" %></td>
+          <td class="controls">
+            <%= f.text_field :section_name, class: "input-large form-control align-center", disabled:true %>
+          </td>
+        </tr>
+　　　　　　　<!-- 職員氏名  -->
+        <tr class="control-group">
+          <td class="form_label"><%= f.label :職員氏名, class: "control-label" %></td>
+          <td class="controls">
+            <% @user = User.where("user_id = ? and branch_cd = ?", @proposal.user_id, @proposal.branch_cd)%>
+            <input type="text", value=<%= @user.first.try(:user_name) %> class="input-large form-control align-center"  disabled="disabled"/>
+          </td>
+        </tr>
+　　　　　　　<!-- 電話 -->
+        <tr class="control-group">
+          <td class="form_label"><%= f.label :tel, class: "control-label" %></td>
+          <td class="controls">
+            <% @user = User.where("user_id = ? and branch_cd = ?", @proposal.user_id, @proposal.branch_cd)%>
+            <%= f.text_field :tel, class: "input-large form-control align-center", disabled:true %>
+          </td>
+        </tr>
+	  </table>
+      </td>
+      </tr>
+	</table>
+
+　　　<!-- 提案の分類 -->
+	<table>
+　　　　　<tr>
+      <td class="bold">【提案の分類】　必ずいずれかを選択してください。
+      </td>
+　　　　　<tr>
+      <td>
+	      <div class="proposal_type" disabled="disabled">
+			<div class="radio">
+			  <label>
+                <%=f.radio_button :proposal_type, "1" %>
+			        （１）新規事業に関すること（例：新規に◯◯事業に参入したい、新プロジェクトを立ち上げたい）
+			  </label>
+			</div>
+			<div class="radio">
+			  <label>
+                <%=f.radio_button :proposal_type, "2" %>
+			         （２）既存事業の新規提案に関すること（例：信用事業で新しい定期貯金を発売したい）
+			  </label>
+			</div>
+			<div class="radio">
+			  <label>
+                <%=f.radio_button :proposal_type, "3" %>
+			         （３）既存事業の改善提案に関すること（例：経済事業で事務フローを改善したい）
+			  </label>
+			</div>
+			<div class="radio">
+			  <label>
+                <%=f.radio_button :proposal_type, "4" %>
+			         （４）本店より提示した課題に関すること
+			  </label>
+			</div>
+	      </div>
+        </td>
+      </tr>
+	</table>
+	
+　　　<!-- 事業の分類 -->
+	<table>
+　　　　　<tr>
+      <td class="bold">【事業の分類】　提案分類で（２）、（３）を選択した場合、いずれかを選択してください。
+      </td>
+　　　　　<tr>
+      <td disabled="disabled">
+        <label class="checkbox"><%= f.check_box :project_type_a, {}, '1','0' %>Ａ．総務・人事教育・広報・情報システムに関すること</label>
+        <label class="checkbox"><%= f.check_box :project_type_b, {}, '1','0' %>Ｂ．営農経済活動に関すること（営農対策・米穀園芸・畜産・営農資材・販売）</label>
+        <label class="checkbox"><%= f.check_box :project_type_c, {}, '1','0' %>Ｃ．生活事業に関すること（生活事業・自動車燃料）</label>
+        <label class="checkbox"><%= f.check_box :project_type_d, {}, '1','0' %>Ｄ．信用事業に関すること（信用企画・信用事務）</label>
+        <label class="checkbox"><%= f.check_box :project_type_e, {}, '1','0' %>Ｅ．共済事業に関すること（共済普及・共済事務）</label>
+        <label class="checkbox"><%= f.check_box :project_type_f, {}, '1','0' %>Ｆ．その他事業に関すること</label>
+      </td>
+      </tr>
+	</table>
+
+　　　<!-- 提案の題名 -->
+    <div class="input-group">
+      <span class="input-group-addon bold" id="basic-addon1">提案の題名</span>
+      <%= f.text_field :proposal_title, class: "form-control", disabled:true%>
+    </div>
+
+　　　<!-- 現状と問題点 -->
+   <div class="bold">【現状と問題点】</div>
+   <%= f.text_area :now_problem,  class:"form-control", rows:"3", disabled:true%>
+
+　　　<!-- 具体的提案 -->
+   <div class="bold">【具体的提案】</div>
+   <%= f.text_area :proposal_detail, class:"form-control", rows:"5", disabled:true%>
+
+　　　<!-- 予想される効果 -->
+   <div class="bold">【予想される効果】</div>
+   <%= f.text_area :effect, class:"form-control", rows:"3", disabled:true%>
+
+　　　<!-- 登録ボタン -->
+	  <div class="actions" id="proposal_submit">
+        <table>
+          <tr>
+            <td>
+              <%= link_to '変更', edit_proposal_path(@proposal), class: "btn btn-primary" %>
+            </td>
+            <td>
+              <%= link_to '戻る', proposals_path, class: "btn btn-default", id: "btn-return" %>
+            </td>
+          </tr>
+        </table>
+	  </div>
+  </fieldset>
+
+<% end %>

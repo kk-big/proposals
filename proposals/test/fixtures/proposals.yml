@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  branch_cd: MyString
+  user_id: MyString
+  proposal_date: MyString
+  section_name: MyString
+  mail: MyString
+  tel: MyString
+  proposal_type: MyString
+  project_type_a: MyString
+  project_type_b: MyString
+  project_type_c: MyString
+  project_type_d: MyString
+  project_type_e: MyString
+  project_type_f: MyString
+  proposal_title: MyText
+  now_problem: MyText
+  proposal_detail: MyText
+  effect: MyText
+
+two:
+  branch_cd: MyString
+  user_id: MyString
+  proposal_date: MyString
+  section_name: MyString
+  mail: MyString
+  tel: MyString
+  proposal_type: MyString
+  project_type_a: MyString
+  project_type_b: MyString
+  project_type_c: MyString
+  project_type_d: MyString
+  project_type_e: MyString
+  project_type_f: MyString
+  proposal_title: MyText
+  now_problem: MyText
+  proposal_detail: MyText
+  effect: MyText
