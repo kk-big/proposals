@@ -132,22 +132,22 @@
 	</table>
 
 　　　<!-- 提案の題名 -->
-    <div class="input-group">
+    <div class="input-group width80per">
       <span class="input-group-addon bold" id="basic-addon1">提案の題名</span>
       <%= f.text_field :proposal_title, class: "form-control", disabled:true%>
     </div>
 
 　　　<!-- 現状と問題点 -->
    <div class="bold">【現状と問題点】</div>
-   <%= f.text_area :now_problem,  class:"form-control", rows:"3", disabled:true%>
+   <%= f.text_area :now_problem,  class:"form-control width80per", rows:"3", disabled:true%>
 
 　　　<!-- 具体的提案 -->
    <div class="bold">【具体的提案】</div>
-   <%= f.text_area :proposal_detail, class:"form-control", rows:"5", disabled:true%>
+   <%= f.text_area :proposal_detail, class:"form-control width80per", rows:"5", disabled:true%>
 
 　　　<!-- 予想される効果 -->
    <div class="bold">【予想される効果】</div>
-   <%= f.text_area :effect, class:"form-control", rows:"3", disabled:true%>
+   <%= f.text_area :effect, class:"form-control width80per", rows:"3", disabled:true%>
 
 　　　<!-- 登録ボタン -->
 	  <div class="actions" id="proposal_submit">
@@ -163,5 +163,5 @@
         </table>
 	  </div>
   </fieldset>
-
+</br>
 <% end %>

@@ -132,12 +132,12 @@
       </td>
 　　　　　<tr>
       <td disabled="disabled">
-        <label class="checkbox"><%= f.check_box :project_type_a, {}, '1','0' %>Ａ．総務・人事教育・広報・情報システムに関すること</label>
-        <label class="checkbox"><%= f.check_box :project_type_b, {}, '1','0' %>Ｂ．営農経済活動に関すること（営農対策・米穀園芸・畜産・営農資材・販売）</label>
-        <label class="checkbox"><%= f.check_box :project_type_c, {}, '1','0' %>Ｃ．生活事業に関すること（生活事業・自動車燃料）</label>
-        <label class="checkbox"><%= f.check_box :project_type_d, {}, '1','0' %>Ｄ．信用事業に関すること（信用企画・信用事務）</label>
-        <label class="checkbox"><%= f.check_box :project_type_e, {}, '1','0' %>Ｅ．共済事業に関すること（共済普及・共済事務）</label>
-        <label class="checkbox"><%= f.check_box :project_type_f, {}, '1','0' %>Ｆ．その他事業に関すること</label>
+        <label class="checkbox" for="proposal_project_type_a"><%= f.check_box :project_type_a, {}, '1','0' %>Ａ．総務・人事教育・広報・情報システムに関すること</label>
+        <label class="checkbox" for="proposal_project_type_b"><%= f.check_box :project_type_b, {}, '1','0' %>Ｂ．営農経済活動に関すること（営農対策・米穀園芸・畜産・営農資材・販売）</label>
+        <label class="checkbox" for="proposal_project_type_c"><%= f.check_box :project_type_c, {}, '1','0' %>Ｃ．生活事業に関すること（生活事業・自動車燃料）</label>
+        <label class="checkbox" for="proposal_project_type_d"><%= f.check_box :project_type_d, {}, '1','0' %>Ｄ．信用事業に関すること（信用企画・信用事務）</label>
+        <label class="checkbox" for="proposal_project_type_e"><%= f.check_box :project_type_e, {}, '1','0' %>Ｅ．共済事業に関すること（共済普及・共済事務）</label>
+        <label class="checkbox" for="proposal_project_type_f"><%= f.check_box :project_type_f, {}, '1','0' %>Ｆ．その他事業に関すること</label>
       </td>
       </tr>
         <%= f.hidden_field :project_type_a, :value => @proposal.project_type_a %>
@@ -149,7 +149,7 @@
 	</table>
 
 　　　<!-- 提案の題名 -->
-    <div class="input-group">
+    <div class="input-group width80per">
       <span class="input-group-addon bold" id="basic-addon1">提案の題名</span>
       <%= f.text_field :proposal_title, class: "form-control", disabled:true%>
       <%= f.hidden_field :proposal_title, :value => @proposal.proposal_title %>
@@ -157,17 +157,17 @@
 
 　　　<!-- 現状と問題点 -->
    <div class="bold">【現状と問題点】</div>
-   <%= f.text_area :now_problem,  class:"form-control", rows:"3", disabled:true%>
+   <%= f.text_area :now_problem,  class:"form-control width80per", rows:"3", disabled:true%>
    <%= f.hidden_field :now_problem, :value => @proposal.now_problem %>
 
 　　　<!-- 具体的提案 -->
    <div class="bold">【具体的提案】</div>
-   <%= f.text_area :proposal_detail, class:"form-control", rows:"5", disabled:true%>
+   <%= f.text_area :proposal_detail, class:"form-control width80per", rows:"5", disabled:true%>
    <%= f.hidden_field :proposal_detail, :value => @proposal.proposal_detail %>
 
 　　　<!-- 予想される効果 -->
    <div class="bold">【予想される効果】</div>
-   <%= f.text_area :effect, class:"form-control", rows:"3", disabled:true%>
+   <%= f.text_area :effect, class:"form-control width80per", rows:"3", disabled:true%>
    <%= f.hidden_field :effect, :value => @proposal.effect %>
 
 　　　<!-- 登録ボタン -->

@@ -49,10 +49,11 @@
           <td class="controls">
             <% if controller.action_name =='new'%>
                <%= f.text_field :user_id, :value => session[:user_id], class: "input-large form-control align-center", disabled:true %>
+               <%= f.hidden_field :user_id, :value => session[:user_id] %>
             <% else %>
-               <%= f.text_field :user_id, class: "input-large form-control align-center", disabled:true %>
+               <%= f.text_field :user_id, :value => @proposal.user_id, class: "input-large form-control align-center", disabled:true %>
+               <%= f.hidden_field :user_id, :value => @proposal.user_id %>
             <% end %>
-            <%= f.hidden_field :user_id, :value => session[:user_id] %>
           </td>
         </tr>
 　　　　　　　<!-- メールアドレス -->
@@ -90,7 +91,7 @@
           <td class="controls">
             <% if controller.action_name =='new'%>
               <% @user = User.where("user_id = ? and branch_cd = ?", session[:user_id], session[:branch_cd])%>
-              <%= f.text_field :section_name, :value => @user.first.try(:section_name), class: "input-large form-control align-center" %>
+              <%= f.text_field :section_name, :value => @user.first.try(:section_name), class: "input-large form-control" %>
             <% else %>
                <%= f.text_field :section_name, class: "input-large form-control"%>
             <% end %>
@@ -169,12 +170,12 @@
         <td class="">提案分類で（２）（３）を選択した場合、いずれかを選択してください</td>
 　　　　　<tr>
       <td colspan="2">
-        <label class="checkbox"><%= f.check_box :project_type_a, {}, '1','0' %>Ａ．総務・人事教育・広報・情報システムに関すること</label>
-        <label class="checkbox"><%= f.check_box :project_type_b, {}, '1','0' %>Ｂ．営農経済活動に関すること（営農対策・米穀園芸・畜産・営農資材・販売）</label>
-        <label class="checkbox"><%= f.check_box :project_type_c, {}, '1','0' %>Ｃ．生活事業に関すること（生活事業・自動車燃料）</label>
-        <label class="checkbox"><%= f.check_box :project_type_d, {}, '1','0' %>Ｄ．信用事業に関すること（信用企画・信用事務）</label>
-        <label class="checkbox"><%= f.check_box :project_type_e, {}, '1','0' %>Ｅ．共済事業に関すること（共済普及・共済事務）</label>
-        <label class="checkbox"><%= f.check_box :project_type_f, {}, '1','0' %>Ｆ．その他事業に関すること</label>
+        <label class="checkbox" for="proposal_project_type_a"><%= f.check_box :project_type_a, {}, '1','0' %>Ａ．総務・人事教育・広報・情報システムに関すること</label>
+        <label class="checkbox" for="proposal_project_type_b"><%= f.check_box :project_type_b, {}, '1','0' %>Ｂ．営農経済活動に関すること（営農対策・米穀園芸・畜産・営農資材・販売）</label>
+        <label class="checkbox" for="proposal_project_type_c"><%= f.check_box :project_type_c, {}, '1','0' %>Ｃ．生活事業に関すること（生活事業・自動車燃料）</label>
+        <label class="checkbox" for="proposal_project_type_d"><%= f.check_box :project_type_d, {}, '1','0' %>Ｄ．信用事業に関すること（信用企画・信用事務）</label>
+        <label class="checkbox" for="proposal_project_type_e"><%= f.check_box :project_type_e, {}, '1','0' %>Ｅ．共済事業に関すること（共済普及・共済事務）</label>
+        <label class="checkbox" for="proposal_project_type_f"><%= f.check_box :project_type_f, {}, '1','0' %>Ｆ．その他事業に関すること</label>
       </td>
       </tr>
 	</table>

@@ -282,9 +282,9 @@ label.checkbox {
 .field_with_errors {
   padding:0px;
   border:0px solid red;
-  display: inline-block;
+/*  display: inline-block; */
 }
-.field_with_errors > input, .field_with_errors > select{
+.field_with_errors > input, .field_with_errors > select, .field_with_errors > textarea{
     border: 1px solid #DD0400;
     color: #DD0400;
 }
