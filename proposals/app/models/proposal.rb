@@ -1,5 +1,7 @@
 class Proposal < ActiveRecord::Base
 
+  belongs_to :branch, :foreign_key => "branch_cd", :primary_key => "branch_cd"
+
  # 地区本部
   validates :branch_cd,
     :presence => true
@@ -9,10 +11,10 @@ class Proposal < ActiveRecord::Base
  # 提案日
   validates :proposal_date,
     :presence => true
- # メールアドレス
-  validates :mail, 
-    allow_blank: true,
-    format: {with: /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, allow_blank: true, multiline: true, message: "の形式が違います。"}
+# # メールアドレス
+#  validates :mail, 
+#    allow_blank: true,
+#    format: {with: /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, allow_blank: true, multiline: true, message: "の形式が違います。"}
  # 提案の分類
   validates :proposal_type, 
     :presence => true

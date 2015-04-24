@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150420140430) do
+ActiveRecord::Schema.define(version: 20150423230212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20150420140430) do
     t.string   "branch_cd"
     t.string   "user_id"
     t.string   "proposal_date"
-    t.string   "section_name"
+    t.string   "section_name1"
     t.string   "mail"
     t.string   "tel"
     t.string   "proposal_type"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20150420140430) do
     t.text     "effect"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "section_name2"
   end
 
   add_index "proposals", ["branch_cd"], name: "index_proposals_on_branch_cd", using: :btree
@@ -66,13 +67,14 @@ ActiveRecord::Schema.define(version: 20150420140430) do
     t.string   "user_password"
     t.string   "user_name"
     t.string   "branch_cd"
-    t.string   "section_name"
+    t.string   "section_name1"
     t.string   "mail"
     t.string   "tel"
     t.string   "role"
     t.string   "delete_flag"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "section_name2"
   end
 
   add_index "users", ["user_id"], name: "index_users_on_user_id", using: :btree

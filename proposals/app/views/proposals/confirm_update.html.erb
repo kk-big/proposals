@@ -37,18 +37,10 @@
             <%= f.hidden_field :user_id, :value => @proposal.user_id %>
           </td>
         </tr>
-　　　　　　　<!-- メールアドレス -->
-        <tr class="control-group">
-          <td class="form_label"><%= f.label :mail, class: "control-label" %></td>
-          <td class="controls">
-            <%= f.text_field :mail, class: "input-large form-control", disabled:true %>
-            <%= f.hidden_field :mail, :value => @proposal.mail %>
-          </td>
-        </tr>
 　	  </table>
       </td>
       <td>
-	  <table class="proposal_form_box_right">
+	  <table class="proposal_form_box_center">
 　　　　　　　<!-- 提案日 -->
         <tr class="control-group">
           <td class="form_label"><%= f.label :proposal_date, class: "control-label" %></td>
@@ -57,12 +49,12 @@
             <%= f.hidden_field :proposal_date, :value => @proposal.proposal_date %>
           </td>
         </tr>
-　　　　　　　<!-- 所属部署 -->
+　　　　　　　<!-- 所属部署 １-->
         <tr class="control-group">
-          <td class="form_label"><%= f.label :section_name, class: "control-label" %></td>
+          <td class="form_label"><%= f.label :section_name1, class: "control-label" %></td>
           <td class="controls">
-            <%= f.text_field :section_name, class: "input-large form-control", disabled:true %>
-            <%= f.hidden_field :section_name, :value => @proposal.section_name %>
+            <%= f.text_field :section_name1, class: "input-large form-control", disabled:true %>
+            <%= f.hidden_field :section_name1, :value => @proposal.section_name1 %>
           </td>
         </tr>
 　　　　　　　<!-- 職員氏名  -->
@@ -73,13 +65,30 @@
             <input type="text", value=<%= @user.first.try(:user_name) %> class="input-large form-control"  disabled="disabled"/>
           </td>
         </tr>
-　　　　　　　<!-- 電話 -->
+	  </table>
+      </td>
+      <td>
+	  <table class="proposal_form_box_right">
+　　　　　　　<!-- 空白 -->
         <tr class="control-group">
-          <td class="form_label"><%= f.label :tel, class: "control-label" %></td>
+          <td class="form_label"></td>
           <td class="controls">
-            <% @user = User.where("user_id = ? and branch_cd = ?", @proposal.user_id, @proposal.branch_cd)%>
-            <%= f.text_field :tel, class: "input-large form-control", disabled:true %>
-            <%= f.hidden_field :tel, :value => @proposal.tel %>
+              <input type="text" class="input-large form-control align-center hidden" disabled="disabled"/>
+          </td>
+        </tr>
+　　　　　　<!-- 所属部署２ -->
+        <tr class="control-group">
+          <td class="form_label"><%= f.label :section_name2, class: "control-label" %></td>
+          <td class="controls">
+            <%= f.text_field :section_name2, class: "input-large form-control", disabled:true %>
+            <%= f.hidden_field :section_name2, :value => @proposal.section_name2 %>
+          </td>
+        </tr>
+　　　　　　　<!-- 空白 -->
+        <tr class="control-group">
+          <td class="form_label"></td>
+          <td class="controls">
+              <input type="text" class="input-large form-control align-center hidden" disabled="disabled"/>
           </td>
         </tr>
 	  </table>

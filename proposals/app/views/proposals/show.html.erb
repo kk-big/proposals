@@ -31,17 +31,10 @@
             <%= f.text_field :user_id, class: "input-large form-control align-center", disabled:true %>
           </td>
         </tr>
-　　　　　　　<!-- メールアドレス -->
-        <tr class="control-group">
-          <td class="form_label"><%= f.label :mail, class: "control-label" %></td>
-          <td class="controls">
-            <%= f.text_field :mail, class: "input-large form-control align-center", disabled:true %>
-          </td>
-        </tr>
 　	  </table>
       </td>
       <td>
-	  <table class="proposal_form_box_right">
+	  <table class="proposal_form_box_center">
 　　　　　　　<!-- 提案日 -->
         <tr class="control-group">
           <td class="form_label"><%= f.label :proposal_date, class: "control-label" %></td>
@@ -51,9 +44,9 @@
         </tr>
 　　　　　　　<!-- 所属部署 -->
         <tr class="control-group">
-          <td class="form_label"><%= f.label :section_name, class: "control-label" %></td>
+          <td class="form_label"><%= f.label :section_name1, class: "control-label" %></td>
           <td class="controls">
-            <%= f.text_field :section_name, class: "input-large form-control align-center", disabled:true %>
+            <%= f.text_field :section_name1, class: "input-large form-control align-center", disabled:true %>
           </td>
         </tr>
 　　　　　　　<!-- 職員氏名  -->
@@ -64,12 +57,29 @@
             <input type="text", value=<%= @user.first.try(:user_name) %> class="input-large form-control align-center"  disabled="disabled"/>
           </td>
         </tr>
-　　　　　　　<!-- 電話 -->
+	  </table>
+      </td>
+      <td>
+	  <table class="proposal_form_box_right">
+　　　　　　　<!-- 空白 -->
         <tr class="control-group">
-          <td class="form_label"><%= f.label :tel, class: "control-label" %></td>
+          <td class="form_label"></td>
           <td class="controls">
-            <% @user = User.where("user_id = ? and branch_cd = ?", @proposal.user_id, @proposal.branch_cd)%>
-            <%= f.text_field :tel, class: "input-large form-control align-center", disabled:true %>
+              <input type="text" class="input-large form-control align-center hidden" disabled="disabled"/>
+          </td>
+        </tr>
+　　　　　　　<!-- 所属部署２ -->
+        <tr class="control-group">
+          <td class="form_label"><%= f.label :section_name2, class: "control-label" %></td>
+          <td class="controls">
+            <%= f.text_field :section_name2, class: "input-large form-control align-center", disabled:true %>
+          </td>
+        </tr>
+　　　　　　　<!-- 空白 -->
+        <tr class="control-group">
+          <td class="form_label"></td>
+          <td class="controls">
+              <input type="text" class="input-large form-control align-center hidden" disabled="disabled"/>
           </td>
         </tr>
 	  </table>

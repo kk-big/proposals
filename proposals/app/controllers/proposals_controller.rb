@@ -9,23 +9,32 @@ class ProposalsController < ApplicationController
       redirect_to root_path and return
     end
 
-    @proposals = Proposal.joins(:user)
+#    @proposals = Proposal.joins(:user)
 
-    strsql = 'select
-                proposals.id as id, proposals.branch_cd as branch_cd, proposals.user_id as user_id, proposals.proposal_date as proposal_date, proposals.section_name as section_name,
-                proposals.mail as mail, proposals.tel as tel, proposals.proposal_type as proposal_type,
+    strsql = 'select 
+                pu.id as id , pu.branch_cd as branch_cd, pu.user_id as user_id, pu.proposal_date as proposal_date, pu.section_name1 as section_name1, pu.section_name2 as section_name2,
+                pu.proposal_type as proposal_type,
+                pu.project_type_a as project_type_a, pu.project_type_b as project_type_b, pu.project_type_c as project_type_c, pu.project_type_d as project_type_d, pu.project_type_e as project_type_e, pu.project_type_f as project_type_f, 
+                pu.proposal_title as proposal_title, pu.now_problem as now_problem, pu.proposal_detail as proposal_detail, pu.effect as effect,
+                pu.user_name as user_name,
+                branches.branch_name as branch_name
+                from
+                (select
+                proposals.id as id, proposals.branch_cd as branch_cd, proposals.user_id as user_id, proposals.proposal_date as proposal_date, proposals.section_name1 as section_name1, proposals.section_name2 as section_name2,
+                proposals.proposal_type as proposal_type,
                 proposals.project_type_a as project_type_a, proposals.project_type_b as project_type_b, proposals.project_type_c as project_type_c, proposals.project_type_d as project_type_d, proposals.project_type_e as project_type_e, proposals.project_type_f as project_type_f, 
                 proposals.proposal_title as proposal_title, proposals.now_problem as now_problem, proposals.proposal_detail as proposal_detail, proposals.effect as effect,
                 users.user_name as user_name
-              from proposals left join users on proposals.branch_cd = users.branch_cd and proposals.user_id = users.user_id'
+                from proposals as proposals left join users as users on proposals.branch_cd = users.branch_cd and proposals.user_id = users.user_id) as pu
+              left join branches as branches on pu.branch_cd = branches.branch_cd'
 
     if session[:role] == '1'
-      strsql = strsql + " where proposals.branch_cd = '" + session[:branch_cd] + "' and proposals.user_id = '" + session[:user_id] + "'"
+      strsql = strsql + " where pu.branch_cd = '" + session[:branch_cd] + "' and pu.user_id = '" + session[:user_id] + "'"
     end
 
     strsql = strsql + " order by id"
 
-    @proposals = Proposal.find_by_sql([strsql])    
+    @proposals = Proposal.find_by_sql([strsql])
 
   end
 
@@ -158,6 +167,6 @@ class ProposalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def proposal_params
-      params.require(:proposal).permit(:id, :branch_cd, :user_id, :proposal_date, :section_name, :mail, :tel, :proposal_type, :project_type_a, :project_type_b, :project_type_c, :project_type_d, :project_type_e, :project_type_f, :proposal_title, :now_problem, :proposal_detail, :effect)
+      params.require(:proposal).permit(:id, :branch_cd, :user_id, :proposal_date, :section_name1, :section_name2, :mail, :tel, :proposal_type, :project_type_a, :project_type_b, :project_type_c, :project_type_d, :project_type_e, :project_type_f, :proposal_title, :now_problem, :proposal_detail, :effect)
     end
 end

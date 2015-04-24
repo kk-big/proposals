@@ -56,22 +56,10 @@
             <% end %>
           </td>
         </tr>
-　　　　　　　<!-- メールアドレス -->
-        <tr class="control-group">
-          <td class="form_label"><%= f.label :mail, class: "control-label" %></td>
-          <td class="controls">
-            <% if controller.action_name =='new'%>
-              <% @user = User.where("user_id = ? and branch_cd = ?", session[:user_id], session[:branch_cd])%>
-              <%= f.text_field :mail, :value => @user.first.try(:mail), class: "input-large form-control" %>
-            <% else %>
-               <%= f.text_field :mail, class: "input-large form-control"%>
-            <% end %>
-          </td>
-        </tr>
 　	  </table>
       </td>
       <td>
-	  <table class="proposal_form_box_right">
+	  <table class="proposal_form_box_center">
 　　　　　　　<!-- 提案日 -->
         <tr class="control-group">
           <td class="form_label"><%= f.label :proposal_date, class: "control-label" %></td>
@@ -85,15 +73,15 @@
             <% end %>
           </td>
         </tr>
-　　　　　　　<!-- 所属部署 -->
+　　　　　　　<!-- 所属部署１ -->
         <tr class="control-group">
-          <td class="form_label"><%= f.label :section_name, class: "control-label" %></td>
+          <td class="form_label"><%= f.label :section_name1, class: "control-label" %></td>
           <td class="controls">
             <% if controller.action_name =='new'%>
               <% @user = User.where("user_id = ? and branch_cd = ?", session[:user_id], session[:branch_cd])%>
-              <%= f.text_field :section_name, :value => @user.first.try(:section_name), class: "input-large form-control" %>
+              <%= f.text_field :section_name1, :value => @user.first.try(:section_name1), class: "input-large form-control" %>
             <% else %>
-               <%= f.text_field :section_name, class: "input-large form-control"%>
+               <%= f.text_field :section_name1, class: "input-large form-control"%>
             <% end %>
           </td>
         </tr>
@@ -109,22 +97,44 @@
             <% end %>
           </td>
         </tr>
-　　　　　　　<!-- 電話 -->
+	  </table>
+      </td>
+      <td>
+	  <table class="proposal_form_box_right">
+　　　　　　　<!-- 空白 -->
         <tr class="control-group">
-          <td class="form_label"><%= f.label :tel, class: "control-label" %></td>
+          <td class="form_label"></td>
+          <td class="controls">
+              <input type="text" class="input-large form-control align-center hidden" disabled="disabled"/>
+          </td>
+        </tr>
+　　　　　　　<!-- 所属部署２ -->
+        <tr class="control-group">
+          <td class="form_label"><%= f.label :section_name2, class: "control-label" %></td>
           <td class="controls">
             <% if controller.action_name =='new'%>
               <% @user = User.where("user_id = ? and branch_cd = ?", session[:user_id], session[:branch_cd])%>
-              <%= f.text_field :tel, :value => @user.first.try(:tel), class: "input-large form-control" %>
+              <%= f.text_field :section_name2, :value => @user.first.try(:section_name2), class: "input-large form-control" %>
             <% else %>
-               <%= f.text_field :tel, class: "input-large form-control"%>
+               <%= f.text_field :section_name2, class: "input-large form-control"%>
             <% end %>
           </td>
         </tr>
+　　　　　　　<!-- 空白 -->
+        <tr class="control-group">
+          <td class="form_label"></td>
+          <td class="controls">
+              <input type="text" class="input-large form-control align-center hidden" disabled="disabled"/>
+          </td>
+        </tr>
 	  </table>
+
       </td>
       </tr>
 	</table>
+
+
+
 
 　　　<!-- 提案の分類 -->
 	<table>

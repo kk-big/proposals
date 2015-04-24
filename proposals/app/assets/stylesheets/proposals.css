@@ -149,6 +149,9 @@ footer{
 #proposal_date{
 	width:110px;
 }
+#branch_name{
+	width:150px;
+}
 #user_name{
 	width:150px;
 }
@@ -158,7 +161,7 @@ footer{
 
 /* 提案登録　提案者テーブル*/
 .proposal_form_box{
-  width: 600px;	
+  width: 860px;	
 }
 /* 提案登録　提案の分類、事業の分類の見出し幅*/
 .type-width{
@@ -169,6 +172,9 @@ footer{
 }
 .width80per{
   width: 80%;
+}
+.hidden{
+  visibility:hidden;
 }
 /* 提案登録　ボタン位置 */
 #proposal_submit {

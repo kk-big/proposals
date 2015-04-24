@@ -13,10 +13,9 @@
       <th>職員コード</th>
       <th>職員名</th>
       <th>地区本部</th>
-      <th>所属部署</th>
+      <th>所属部署１</th>
+      <th>所属部署２</th>
       <th>権限</th>
-      <th>メールアドレス</th>
-      <th>電話</th>
       <th>状態</th>
       <th></th>
     </tr>
@@ -30,7 +29,8 @@
         <td id="align-right"><%= user.user_id %></td>
         <td id="align-left"><%= user.user_name %></td>
         <td id="align-left"><%= user.branch.branch_name %></td>
-        <td id="align-left"><%= user.section_name %></td>
+        <td id="align-left"><%= user.section_name1 %></td>
+        <td id="align-left"><%= user.section_name2 %></td>
         <td><%case user.role
             when '1' %>
               <%='一般' %>
@@ -46,8 +46,6 @@
               <%='システム管理者' %>
 		   <%end%>
         </td>
-        <td id="align-left"><%= user.mail %></td>
-        <td id="align-left"><%= user.tel %></td>
         <td><% if user.delete_flag == '1' then %>
               <%='無効' %>
             <% else %>
