@@ -150,7 +150,7 @@ footer{
 	width:110px;
 }
 #branch_name{
-	width:150px;
+	width:100px;
 }
 #user_name{
 	width:150px;
@@ -295,6 +295,9 @@ label.checkbox {
     color: #DD0400;
 }
 .field_with_errors > label{ color: #DD0400; }
+.field_with_errors + span{
+    color: #DD0400;
+}
 #error_explanation {
   width: 450px;
   border: 2px solid red;

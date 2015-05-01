@@ -133,9 +133,6 @@
       </tr>
 	</table>
 
-
-
-
 　　　<!-- 提案の分類 -->
 	<table>
 　　　　　<tr>
@@ -147,25 +144,25 @@
 			<div class="radio">
 			  <label>
                 <%=f.radio_button :proposal_type, "1" %>
-			        （１）新規事業に関すること（例：新規に◯◯事業に参入したい、新プロジェクトを立ち上げたい）
+			        <span>（１）新規事業に関すること（例：新規に◯◯事業に参入したい、新プロジェクトを立ち上げたい）</span>
 			  </label>
 			</div>
 			<div class="radio">
 			  <label>
                 <%=f.radio_button :proposal_type, "2" %>
-			         （２）既存事業の新規提案に関すること（例：信用事業で新しい定期貯金を発売したい）
+			    <span>（２）既存事業の新規提案に関すること（例：信用事業で新しい定期貯金を発売したい）</span>
 			  </label>
 			</div>
 			<div class="radio">
 			  <label>
                 <%=f.radio_button :proposal_type, "3" %>
-			         （３）既存事業の改善提案に関すること（例：経済事業で事務フローを改善したい）
+			    <span>（３）既存事業の改善提案に関すること（例：経済事業で事務フローを改善したい）</span>
 			  </label>
 			</div>
 			<div class="radio">
 			  <label>
                 <%=f.radio_button :proposal_type, "4" %>
-			         （４）本店より提示した課題に関すること
+			    <span> （４）本店より提示した課題に関すること</span>
 			  </label>
 			</div>
 	      </div>
@@ -180,12 +177,12 @@
         <td class="">提案分類で（２）（３）を選択した場合、いずれかを選択してください</td>
 　　　　　<tr>
       <td colspan="2">
-        <label class="checkbox" for="proposal_project_type_a"><%= f.check_box :project_type_a, {}, '1','0' %>Ａ．総務・人事教育・広報・情報システムに関すること</label>
-        <label class="checkbox" for="proposal_project_type_b"><%= f.check_box :project_type_b, {}, '1','0' %>Ｂ．営農経済活動に関すること（営農対策・米穀園芸・畜産・営農資材・販売）</label>
-        <label class="checkbox" for="proposal_project_type_c"><%= f.check_box :project_type_c, {}, '1','0' %>Ｃ．生活事業に関すること（生活事業・自動車燃料）</label>
-        <label class="checkbox" for="proposal_project_type_d"><%= f.check_box :project_type_d, {}, '1','0' %>Ｄ．信用事業に関すること（信用企画・信用事務）</label>
-        <label class="checkbox" for="proposal_project_type_e"><%= f.check_box :project_type_e, {}, '1','0' %>Ｅ．共済事業に関すること（共済普及・共済事務）</label>
-        <label class="checkbox" for="proposal_project_type_f"><%= f.check_box :project_type_f, {}, '1','0' %>Ｆ．その他事業に関すること</label>
+        <label class="checkbox" for="proposal_project_type_a"><%= f.check_box :project_type_a, {:class => 'checkbox'}, '1','0' %><span>Ａ．総務・人事教育・広報・情報システムに関すること</span></label>
+        <label class="checkbox" for="proposal_project_type_b"><%= f.check_box :project_type_b, {:class => 'checkbox'}, '1','0' %><span>Ｂ．営農経済活動に関すること（営農対策・米穀園芸・畜産・営農資材・販売）</span></label>
+        <label class="checkbox" for="proposal_project_type_c"><%= f.check_box :project_type_c, {:class => 'checkbox'}, '1','0' %><span>Ｃ．生活事業に関すること（生活事業・自動車燃料）</span></label>
+        <label class="checkbox" for="proposal_project_type_d"><%= f.check_box :project_type_d, {:class => 'checkbox'}, '1','0' %><span>Ｄ．信用事業に関すること（信用企画・信用事務）</span></label>
+        <label class="checkbox" for="proposal_project_type_e"><%= f.check_box :project_type_e, {:class => 'checkbox'}, '1','0' %><span>Ｅ．共済事業に関すること（共済普及・共済事務）</span></label>
+        <label class="checkbox" for="proposal_project_type_f"><%= f.check_box :project_type_f, {:class => 'checkbox'}, '1','0' %><span>Ｆ．その他事業に関すること</span></label>
       </td>
       </tr>
 	</table>
