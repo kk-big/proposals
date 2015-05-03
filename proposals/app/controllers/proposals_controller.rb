@@ -94,15 +94,16 @@ class ProposalsController < ApplicationController
     end
   end
 
-  # POST /citizens/0/thanks
+  # POST /proposals/0/thanks
   def thanks_update
     if params[:back]
       render :action => 'edit' and return
     end
 
     respond_to do |format|
-      if @proposal.update(proposal_params)
+#      if @proposal.update(proposal_params)
 #        format.html { redirect_to @proposal, notice: '提案を1件更新しました。' }
+      if @proposal.update_with_conflict_validation(proposal_params)
         format.html { redirect_to proposals_path, notice: '提案を1件変更しました。' }
         format.json { render :show, status: :ok, location: @proposal }
       else
@@ -139,7 +140,8 @@ class ProposalsController < ApplicationController
   # PATCH/PUT /proposals/1.json
   def update
     respond_to do |format|
-      if @proposal.update(proposal_params)
+#      if @proposal.update(proposal_params)
+      if @proposal.update_with_conflict_validation(proposal_params)
         format.html { redirect_to @proposal, notice: '提案を1件更新しました。' }
         format.json { render :show, status: :ok, location: @proposal }
       else
@@ -167,6 +169,6 @@ class ProposalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def proposal_params
-      params.require(:proposal).permit(:id, :branch_cd, :user_id, :proposal_date, :section_name1, :section_name2, :mail, :tel, :proposal_type, :project_type_a, :project_type_b, :project_type_c, :project_type_d, :project_type_e, :project_type_f, :proposal_title, :now_problem, :proposal_detail, :effect)
+      params.require(:proposal).permit(:id, :branch_cd, :user_id, :proposal_date, :section_name1, :section_name2, :mail, :tel, :proposal_type, :project_type_a, :project_type_b, :project_type_c, :project_type_d, :project_type_e, :project_type_f, :proposal_title, :now_problem, :proposal_detail, :effect, :lock_version)
     end
 end

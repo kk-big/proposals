@@ -179,6 +179,9 @@
    <%= f.text_area :effect, class:"form-control width80per", rows:"3", disabled:true%>
    <%= f.hidden_field :effect, :value => @proposal.effect %>
 
+　　　<!-- ロックバージョン -->
+   <%= f.hidden_field :lock_version %>
+
 　　　<!-- 登録ボタン -->
 	  <div class="actions" id="proposal_submit">
         <table>

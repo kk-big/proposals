@@ -56,4 +56,16 @@ class Proposal < ActiveRecord::Base
     end
   end
 
+  # コンフリクトが起こる可能性がある更新処理
+  def update_with_conflict_validation(*args)
+    update(*args)
+    rescue ActiveRecord::StaleObjectError
+      self.lock_version = lock_version_was
+      errors.add :base, "この商品は、あなたが編集中に他の人に更新されました。"
+      changes.except("updated_at").each do |name, values|
+      errors.add name, " #{values.first}"
+    end
+    false
+  end
+
 end

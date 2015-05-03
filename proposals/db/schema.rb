@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150423230212) do
+ActiveRecord::Schema.define(version: 20150503230204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,9 +53,10 @@ ActiveRecord::Schema.define(version: 20150423230212) do
     t.text     "now_problem"
     t.text     "proposal_detail"
     t.text     "effect"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "section_name2"
+    t.integer  "lock_version",    default: 0
   end
 
   add_index "proposals", ["branch_cd"], name: "index_proposals_on_branch_cd", using: :btree
