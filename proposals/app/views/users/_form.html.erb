@@ -87,9 +87,9 @@
                <td class="form_label"><%= f.label :role,class: "control-label" %></td>
                <td class="controls">
                  <% if session[:role] =='1'%>
-                   <%= f.select :role, [["一般", "1"], ["地区本部事務局", "2"], ["地区本部担当部署", "3"], ["本店事務局", "4"], ["提案審査会", "5"], ["システム管理者", "9"]] ,{}, { :class => 'input-large form-control disabled-color', :disabled => true } %>
+                   <%= f.select :role, [["一般職員", "1"], ["地区本部事務局", "2"], ["地区本部担当部署", "3"], ["本店事務局", "4"], ["本店担当部署", "5"], ["提案審査会", "6"], ["システム管理者", "9"]] ,{}, { :class => 'input-large form-control disabled-color', :disabled => true } %>
                  <% else %>
-                   <%= f.select :role, [["一般", "1"], ["地区本部事務局", "2"], ["地区本部担当部署", "3"], ["本店事務局", "4"], ["提案審査会", "5"], ["システム管理者", "9"]] ,{}, { :class => 'input-large form-control' } %>
+                   <%= f.select :role, [["一般職員", "1"], ["地区本部事務局", "2"], ["地区本部担当部署", "3"], ["本店事務局", "4"], ["本店担当部署", "5"], ["提案審査会", "6"], ["システム管理者", "9"]] ,{}, { :class => 'input-large form-control' } %>
                  <% end %>
                </td>
 　　　　　　　　　　　　　<td></td>

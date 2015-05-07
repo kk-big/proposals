@@ -15,8 +15,10 @@ class LoginsController < ApplicationController
       @branch = Branch.where(branch_name: params[:branch_name][:name])
       session[:branch_cd] = @branch.first.try(:branch_cd)
     else
-      @flash_now_alert = "もう一度入力してください。"
-      render "new"     
+      flash.now[:notice] = "もう一度入力してください。"
+#      @flash_now_alert = "もう一度入力してください。"
+      render "new"
+      return
     end
     if User.where(user_id: params[:login_id], :user_password => params[:login_pass],delete_flag: "0").exists?
       session[:user_id] = params[:login_id]
@@ -26,8 +28,10 @@ class LoginsController < ApplicationController
       session[:role] = @user.first.try(:role)
       redirect_to proposals_path
     else
-      @flash_now_alert = "もう一度入力してください。"
+      flash.now[:notice] = "もう一度入力してください。"
+#      @flash_now_alert = "もう一度入力してください。"
       render "new"
+      return
     end
   end
 
